@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>Счетчик CSS</h2>
+        <h4>ol имеет нумерацию</h4>
+        <ol>
+            <li>item </li>
+            <li>item </li>
+            <li>item </li>
+        </ol>
+        <h4>другие теги не имеют нумерацию</h4>
+        <div>
+            <p> &lt;p&gt;paragraph&lt;/p&gt;</p>
+            <p> &lt;p&gt;paragraph&lt;/p&gt;</p>
+            <p> &lt;p&gt;paragraph&lt;/p&gt;</p>
+        </div>
+        <h4>Три свойства CSS позволят задать нумерацию любому селектору</h4>
+        <h5 class="red">counter, reset, increment</h5>
+        <div class="num">
+            <p>родитель
+                <kbd>counter-reset: variable</kbd>
+            </p>
+            <p>потомок
+                <kbd>counter-increment: variable</kbd>
+            </p>
+            <p>место вывода
+                <kbd>content: counter(variable)</kbd>
+            </p>
+        </div>
+        <h4>html</h4>
+        <pre><kbd>&lt;div class="num"&gt;
+    &lt;p&gt; lorem &lt;/p&gt;
+    &lt;p&gt; lorem &lt;/p&gt;
+    &lt;p&gt; lorem &lt;/p&gt;
+&lt;/div&gt;</kbd></pre>
+        <h4>css</h4>
+        <pre><kbd>.num {
+    counter-reset: <span class="red">mynum</span>; <span class="comment">// mynum -  произвольное имя</span>
+}
+.num  p {
+    counter-increment: <span class="red">mynum</span>;
+}
+
+.num p::before {
+    content: counter(<span class="red">mynum</span>)'. ';
+}            
+        </kbd></pre>
+        <h4>Изменение начала отсчета и шага</h4>
+        <div class="num-step">
+            <p>lorem</p>
+            <p>lorem</p>
+            <p>lorem</p>
+        </div>
+        <h4>css</h4>
+        <pre><kbd>.num-step {
+            counter-reset: <span class="red">mystep 3</span>; <span class="comment">// 30 -  начало отсчета</span>
+        }
+        .num-step  p {
+            counter-increment: <span class="red">mystep -10</span>; <span class="comment">// -10 это шаг</span>
+        }
+        
+        .num-step p::before {
+            content: counter(<span class="red">mystep</span>)'. ';
+        }            
+    </kbd></pre>
+        <h4>Изменение вида отображаемых цифр</h4>
+        <p>Цифры находятся в свойстве content в качестве аргументов. К ним применяются свойства CSS текущего селектора и особые
+            свойства выбора типа отображения цифр, аналогичные свойству list-style-type:</p>
+
+        <pre><kbd>
+                .num-step p::before {
+                    content: counter(mystep, <span class="red">upper-roman</span>)'. ';
+                }
+        </kbd></pre>
+    </div>
+    <a href="./html/slide1.html" class="next">next</a>
+</body>
+
+</html>
